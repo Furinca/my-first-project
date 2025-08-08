@@ -1,0 +1,24 @@
+# Python関連のファイルを除外
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# 環境設定ファイル
+.env
+.venv
+env/
+venv/
+
+# IDE設定ファイル
+.vscode/settings.json
+.idea/
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# ログファイル
+*.log
