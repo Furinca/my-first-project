@@ -1,5 +1,6 @@
 import random
-from praise_data import basic_praise, mood_praise, special_praise
+from datetime import datetime
+from praise_data import basic_praise, mood_praise, special_praise, time_based_praise
 
 class PraiseBot:
     def __init__(self):
@@ -35,3 +36,26 @@ class PraiseBot:
     def farewell(self):
         """お別れメッセージ"""
         return f"またいつでも来てね！\n君は本当に素晴らしいよ！👋✨"
+    
+    def get_time_based_praise(self):
+        """現在の時間に応じた褒め言葉を返す"""
+        self.praise_count += 1
+        
+        now = datetime.now()
+        hour = now.hour
+        
+        if 5 <= hour < 12:
+            # 朝 (5:00-11:59)
+            time_period = "morning"
+            time_emoji = "🌅"
+        elif 12 <= hour < 18:
+            # 午後 (12:00-17:59)
+            time_period = "afternoon" 
+            time_emoji = "☀️"
+        else:
+            # 夜 (18:00-4:59)
+            time_period = "evening"
+            time_emoji = "🌙"
+        
+        praise_message = random.choice(time_based_praise[time_period])
+        return f"{time_emoji} {praise_message}"
